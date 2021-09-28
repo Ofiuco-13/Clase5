@@ -6,18 +6,32 @@ Clase4: 2horas, 18minutos, 45s.
 Clase5: 2horas, 40minutos, 48s.
 */
 
-function calcularTiempoTotal (totalHoras, totalMinutos, totalSegundos) {
-    document.querySelector('strong').innerText = `El total es ${totalHoras}hs:${totalMinutos}mins:${totalSegundos}s`
+function convertirTiempo(totalHoras, totalMinutos, totalSegundos) {
+   totalMinutos = Math.floor(totalSegundos / 60);
+   totalMinutos = totalMinutos % 60;
+    
+   if (totalMinutos >= 60) {
+       totalHoras = totalHoras + 1;
+   }
+
+   document.querySelector('strong').innerText = `${totalHoras}hs ${totalHoras}min ${totalSegundos}s`
 }
+
 
 const $calcularTiempoTotal = document.querySelector('#calcular-tiempo-total');
 
 $calcularTiempoTotal.onclick = function calcularTiempoTotal() {
-    const totalHoras = document.querySelector('.horas').value;
-    const totalMinutos = document.querySelector('.minutos').value;
-    const totalSegundos = document.querySelector('.segundos').value;
+    let totalHoras = document.querySelector('.horas').value;
+    let totalMinutos = document.querySelector('.minutos').value;
+    let totalSegundos = document.querySelector('.segundos').value;
 
-    calcularTiempoTotal(totalHoras, totalMinutos, totalSegundos);
-
+    convertirTiempo(totalSegundos, totalMinutos, totalHoras);
+        
     return false;
 }
+
+/*
+horas = Math.floor(segundos / 3600)
+minutos = Math.floor((segundos % 3600) / 60)
+segundos = ((segundos % 3600) % 60)
+*/
