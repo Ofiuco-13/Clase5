@@ -7,14 +7,8 @@ Clase5: 2horas, 40minutos, 48s.
 */
 
 function convertirTiempo(totalHoras, totalMinutos, totalSegundos) {
-   totalMinutos = Math.floor(totalSegundos / 60);
-   totalMinutos = totalMinutos % 60;
-    
-   if (totalMinutos >= 60) {
-       totalHoras = totalHoras + 1;
-   }
 
-   document.querySelector('strong').innerText = `${totalHoras}hs ${totalHoras}min ${totalSegundos}s`
+  
 }
 
 
@@ -25,8 +19,9 @@ $calcularTiempoTotal.onclick = function calcularTiempoTotal() {
     let totalMinutos = document.querySelector('.minutos').value;
     let totalSegundos = document.querySelector('.segundos').value;
 
-    convertirTiempo(totalSegundos, totalMinutos, totalHoras);
-        
+    console.log(totalHoras, totalMinutos, totalSegundos);
+    //convertirTiempo(totalSegundos, totalMinutos, totalHoras);
+
     return false;
 }
 
