@@ -7,20 +7,30 @@ Clase5: 2horas, 40minutos, 48s.
 */
 
 function convertirTiempo(totalHoras, totalMinutos, totalSegundos) {
+    totalHoras = Math.floor(totalHoras / 3600);
+    totalMinutos = Math.floor(totalMinutos / 60);
 
-  
+   totalSegundos = totalHoras + totalMinutos;
+
+    for(let i = 0; i < totalSegundos; i++) {
+        if (totalSegundos >= 60) {
+            totalMinutos++;
+        }
+        if (totalMinutos >= 60) {
+            totalHoras++;
+        }
+    }
+    document.querySelector('strong').innerText = `${totalHoras}hs ${totalMinutos}m ${totalSegundos}s`;
 }
-
 
 const $calcularTiempoTotal = document.querySelector('#calcular-tiempo-total');
 
 $calcularTiempoTotal.onclick = function calcularTiempoTotal() {
-    let totalHoras = document.querySelector('.horas').value;
-    let totalMinutos = document.querySelector('.minutos').value;
-    let totalSegundos = document.querySelector('.segundos').value;
-
+    let totalHoras = Number(document.querySelectorAll('.horas').value);
+    let totalMinutos = Number(document.querySelectorAll('.minutos').value);
+    let totalSegundos = Number(document.querySelectorAll('.segundos').value);
     console.log(totalHoras, totalMinutos, totalSegundos);
-    //convertirTiempo(totalSegundos, totalMinutos, totalHoras);
+    convertirTiempo(totalSegundos, totalMinutos, totalHoras);
 
     return false;
 }
