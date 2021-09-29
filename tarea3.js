@@ -7,36 +7,39 @@ Clase5: 2horas, 40minutos, 48s.
 */
 
 function convertirTiempo(totalHoras, totalMinutos, totalSegundos) {
-    totalHoras = Math.floor(totalHoras / 3600);
-    totalMinutos = Math.floor(totalMinutos / 60);
 
-   totalSegundos = totalHoras + totalMinutos;
+    let segundosEnHoras = totalHoras * 3600;
+    let segundosEnMinutos = totalMinutos * 60;
+    let segundos = totalSegundos + segundosEnMinutos + segundosEnHoras;
 
-    for(let i = 0; i < totalSegundos; i++) {
-        if (totalSegundos >= 60) {
-            totalMinutos++;
-        }
-        if (totalMinutos >= 60) {
-            totalHoras++;
-        }
-    }
-    document.querySelector('strong').innerText = `${totalHoras}hs ${totalMinutos}m ${totalSegundos}s`;
+    let horas = Math.floor( segundos / 3600 );
+    let minutos = Math.floor( (segundos % 3600) / 60 );
+    let segundosEnTotal = segundos % 60;
+
+    document.querySelector('strong').innerText = `El total es de ${horas}hs ${minutos}m ${segundosEnTotal}s`;
 }
 
 const $calcularTiempoTotal = document.querySelector('#calcular-tiempo-total');
 
-$calcularTiempoTotal.onclick = function calcularTiempoTotal() {
-    let totalHoras = Number(document.querySelectorAll('.horas').value);
-    let totalMinutos = Number(document.querySelectorAll('.minutos').value);
-    let totalSegundos = Number(document.querySelectorAll('.segundos').value);
-    console.log(totalHoras, totalMinutos, totalSegundos);
-    convertirTiempo(totalSegundos, totalMinutos, totalHoras);
+$calcularTiempoTotal.onclick = () => {
+    let totalHoras = document.querySelectorAll('.horas');
+    let totalMinutos = document.querySelectorAll('.minutos');
+    let totalSegundos = document.querySelectorAll('.segundos');
+
+    let horasTotales = 0;
+    let minutosTotales = 0;
+    let segundosTotales = 0;
+
+    const labels = document.querySelectorAll('label')
+
+    for (i = 0; i < labels.length; ++i) {
+        horasTotales += Number(totalHoras[i].value)
+        minutosTotales += Number(totalMinutos[i].value)
+        segundosTotales += Number(totalSegundos[i].value)
+
+    }
+    
+    convertirTiempo(horasTotales, minutosTotales, segundosTotales);
 
     return false;
 }
-
-/*
-horas = Math.floor(segundos / 3600)
-minutos = Math.floor((segundos % 3600) / 60)
-segundos = ((segundos % 3600) % 60)
-*/
