@@ -30,7 +30,7 @@ $calcularTiempoTotal.onclick = () => {
     let minutosTotales = 0;
     let segundosTotales = 0;
 
-    const labels = document.querySelectorAll('label')
+    const labels = document.querySelectorAll('label');
 
     for (i = 0; i < labels.length; ++i) {
         horasTotales += Number(totalHoras[i].value)
