@@ -1,13 +1,15 @@
 document.querySelector('#calcular').onclick = mostrarResultados;
 
 function mostrarResultados () {
-    mostrarNumeroPromedio();
-    mostrarMenorNumero();
-    mostrarMayorNumero();
-    mostrarNumeroFrecuente();
+    const numeros = obtenerNumeros();
+
+    mostrarNumeroPromedio(numeros);
+    mostrarMenorNumero(numeros);
+    mostrarMayorNumero(numeros);
+    mostrarNumeroFrecuente(numeros);
 }
 
-function crearArray () {
+function obtenerNumeros () {
     const $numeros = document.querySelectorAll('li');
     const array = [];
 
@@ -17,22 +19,19 @@ function crearArray () {
     return array;
 }
 
-function mostrarNumeroPromedio () {
-    const numeros = crearArray();
+function mostrarNumeroPromedio (numeros) {
     document.querySelector('#numero-promedio').textContent = 'Numero promedio: ' + obtenerNumeroPromedio(numeros);
 }
 
-function mostrarMenorNumero () {
-    const numeros = crearArray();
+function mostrarMenorNumero (numeros) {
     document.querySelector('#menor-numero').textContent = 'Menor numero: ' + obtenerMenorNumero(numeros);
 }
 
-function mostrarMayorNumero () {
-    const numeros = crearArray();
+function mostrarMayorNumero (numeros) {
     document.querySelector('#mayor-numero').textContent = 'Mayor numero: ' + obtenerMayorNumero(numeros);
 }
 
-function mostrarNumeroFrecuente () {
-    const numeros = crearArray();
+function mostrarNumeroFrecuente (numeros) {
     document.querySelector('#numero-frecuente').textContent = 'Numero mas frecuente: ' + obtenerNumeroFrecuente(numeros);
 }
+

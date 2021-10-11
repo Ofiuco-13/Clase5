@@ -24,26 +24,25 @@ function obtenerMayorNumero(numeros) {
             mayorNumero = numeros[i];
         }
     }
-    return mayorNumero
+    return mayorNumero;
 }
 
 function obtenerNumeroFrecuente(numeros) {
-    let numeroRepeticiones = [0]
-    let numeroMasFrecuente = [0];
-
-    for(let i = 0; i < numeros.length; i++) {
-        let frecuente = [];
-        for(let j = i + 1; j <= numeros.length; j++) {
-            if (numeros[i] === numeros[j]) {
-                frecuente.push(numeros[i]);
-                console.log(frecuente);
-            }
-        }
-        if (frecuente.length > numeroRepeticiones) {
-            numeroRepeticiones[1] = frecuente.length;
-            numeroMasFrecuente[0] = frecuente[0];
-        } 
-    }
-    return numeroMasFrecuente[0];
+  let masFrecuente = 1;
+  let vecesRepetido = 0;
+  let numeroMasFrecuente;
+  for (let i = 0; i < numeros.length; i++) {
+      for (let j = i; j < numeros.length; j++) {
+          if (numeros[i] === numeros[j]) {
+              vecesRepetido++;
+          }
+          if (masFrecuente < vecesRepetido) {
+              masFrecuente = vecesRepetido;
+              numeroMasFrecuente = numeros[i];
+          }
+      }
+      vecesRepetido = 0;
+  }
+  return numeroMasFrecuente;
 }
 
